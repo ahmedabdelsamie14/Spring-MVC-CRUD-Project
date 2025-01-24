@@ -1,35 +1,133 @@
-Admin_Panel_App
-Project Overview
-The Admin Panel App is a comprehensive management tool designed to streamline administrative tasks and enhance the control and efficiency of various operations within your system. Tailored for administrative users, the application provides a centralized hub to manage and monitor crucial aspects of your business or platform. by using Spring MVC , Hibernate , Maven and MYSQL DB
+# Spring MVC CRUD Application
 
-Key Features
-Product Management
-Take control of your product catalog with intuitive features for adding, updating, and removing products. The application supports seamless integration with databases, such as MySQL, and utilizes Hibernate for efficient data handling.
+This project is a **Spring MVC CRUD Application** for managing products. It uses JSP for views, Hibernate for ORM, and MySQL as the database. The application is deployed on **Apache Tomcat 9** and is designed to demonstrate CRUD operations in a web application.
 
-CRUD Operations
-The application facilitates the following CRUD operations for managing product details:
+## Features
 
-View homePage
-The home page is reached by going to the link: http://localhost:8080/ GitHub Logo in backend the request send to the method in controller and get response in list of product page
+- **Create, Read, Update, Delete** operations for products.
+- User-friendly interface with JSP pages.
+- Integration with **Hibernate** for ORM and database operations.
+- MySQL as the backend database.
+- Modular design following the MVC architecture.
 
+## Technologies Used
 
-Create (Add)
-in backend : after clicking the button add product the request send to the controller which handle bussiness logic for insertion on product and go to dao layer and save product into database
+- **Spring Framework 5.3.30**
+- **Hibernate 5.6.15**
+- **MySQL 8.0**
+- **Apache Tomcat 9**
+- **Java 8**
+- **JSP and JSTL** for the frontend
 
-Read (View)
-To view details of a product: The home page is reached by going to the link: http://localhost:8080/viewDetails
+## Prerequisites
 
-Update
-To update the details of an existing product:
-The home page is reached by going to the link: http://localhost:8080/updateProduct
+To run this project, ensure you have the following installed:
 
-Delete
-To delete a product from the system:
-clicking into button delete in the backend : the request is send to method delete product in controller and this method handle operation that can delete on database and return the products after deleting
-These operations are implemented using Spring MVC and Hibernate, ensuring a seamless and efficient management of product data within the Admin_Panel_App.
+- **Java Development Kit (JDK) 8 or higher**
+- **Apache Maven 3.6+**
+- **MySQL 8.0**
+- **Apache Tomcat 9**
 
-Technologies Used
-Spring MVC
-Hibernate
-Maven
-MYSQL DB
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
+```
+
+### 2. Configure the Database
+
+1. Create a database named `productdb` in MySQL.
+2. Run the following SQL script to create the `products` table:
+
+```sql
+CREATE DATABASE productdb;
+
+USE productdb;
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    quantity INT NOT NULL
+);
+```
+
+3. Update the `application.properties` file in the project with your database credentials:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/productdb
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+```
+
+### 3. Build the Project
+
+Run the following Maven command to build the project:
+
+```bash
+mvn clean install
+```
+
+### 4. Deploy to Tomcat
+
+1. Copy the generated `.war` file from the `target` directory to the `webapps` directory of your Tomcat server.
+2. Start the Tomcat server.
+3. Access the application at `http://localhost:8080/SpringMvcCrudApp`.
+
+## Project Structure
+
+```
+SpringMvcCrudApp
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com.example.app
+│   │   │       ├── config       # Spring Configuration Classes
+│   │   │       ├── controller   # Controllers
+│   │   │       ├── model        # Entity Classes
+│   │   │       ├── repository   # DAO Layer
+│   │   │       └── service      # Service Layer
+│   │   ├── resources
+│   │   │   └── application.properties  # Database Configuration
+│   │   └── webapp
+│   │       ├── WEB-INF
+│   │       │   ├── views        # JSP Files
+│   │       │   └── web.xml      # Deployment Descriptor
+├── pom.xml                      # Maven Dependencies
+└── README.md
+```
+
+## Endpoints
+
+### 1. Product Management
+
+| HTTP Method | Endpoint          | Description            |
+|-------------|-------------------|------------------------|
+| GET         | `/products`       | View all products      |
+| GET         | `/products/{id}`  | View product details   |
+| POST        | `/products`       | Add a new product      |
+| PUT         | `/products/{id}`  | Update an existing product |
+| DELETE      | `/products/{id}`  | Delete a product       |
+
+## Development Workflow
+
+1. **Backend Development**: Implement controllers, services, and repositories.
+2. **Frontend Development**: Design JSP views using HTML, CSS, and JSTL.
+3. **Testing**: Use Postman or a browser to test endpoints.
+4. **Deployment**: Deploy the `.war` file to Tomcat.
+
+## Troubleshooting
+
+- **JSP Pages Not Loading**: Ensure `tomcat-embed-jasper` dependency is included in `pom.xml`.
+- **Database Connection Issues**: Verify MySQL is running and `application.properties` has correct credentials.
+- **Dependency Issues**: Run `mvn clean install` to refresh dependencies.
+
+---
+
+### Author
+Ahmed Abdelsamie
+
