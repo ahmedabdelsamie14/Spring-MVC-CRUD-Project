@@ -33,7 +33,7 @@ To run this project, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
+git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/ahmedabdelsamie14/Spring-MVC-CRUD-Project)
 cd your-repo-name
 ```
 
