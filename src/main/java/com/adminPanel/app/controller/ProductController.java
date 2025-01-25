@@ -26,7 +26,9 @@ public class ProductController {
 
     @GetMapping("/add")
     public String showAddProductForm(Model model) {
-        model.addAttribute("product", new Product());
+        Product product = new Product();
+        product.setProductDetails(new ProductDetails());
+        model.addAttribute("product", product);
         return "addProductForm";
     }
 

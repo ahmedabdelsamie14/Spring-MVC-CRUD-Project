@@ -25,16 +25,16 @@ public class ProductDetails {
 
     @Column(name = "expiration_date" , nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotNull(message = "Expiration Date Cannot Be NULL")
-    @NotBlank
+    @NotNull(message = "Expiration Date Cannot Be Empty")
     private Date expirationDate;
 
     @Column(name = "manufacturer")
-    @NotNull(message = "Manufacturer Cannot Be NULL")
+    @NotNull
+    @NotBlank(message = "Manufacturer Cannot Be Empty")
     private String manufacturer;
 
     @Column(name = "price")
-    @NotNull(message = "Price Cannot Be NULL")
+    @NotNull(message = "Price Cannot Be Empty")
     private Double price;
 
     @Column(name = "available", nullable = false)
