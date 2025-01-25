@@ -1,29 +1,29 @@
-create database productDB;
-use productDB;
 
-create table product(
-                        id int auto_increment primary key ,
-                        name varchar(255) not null
-);
+CREATE DATABASE IF NOT EXISTS productdb;
+USE productdb;
 
-create table product_details(
-                                id int auto_increment primary key ,
-                                product_id int not null ,
-                                name varchar(255) not null ,
-                                expiration_date date not null,
-                                manufacturer varchar(255) not null ,
-                                price double not null ,
-                                available boolean not null default false,
-                                foreign key (product_id) references product(id)
-);
 
-INSERT INTO productDB.product (id, name) VALUES (1, 'milk');
-INSERT INTO productDB.product (id, name) VALUES (2, 'fish');
-INSERT INTO productDB.product (id, name) VALUES (3, 'cheese');
-INSERT INTO productDB.product (id, name) VALUES (4, 'chocolate');
+CREATE TABLE IF NOT EXISTS product (
+                                       id INT AUTO_INCREMENT PRIMARY KEY,
+                                       name VARCHAR(255) NOT NULL
+    );
 
-INSERT INTO productDB.product_details (id, product_id, name, expiration_date, manufacturer, price, available) VALUES (1, 1, 'milk', '2024-02-08', 'dina farms', 30, 1);
-INSERT INTO productDB.product_details (id, product_id, name, expiration_date, manufacturer, price, available) VALUES (2, 2, 'fish', '2024-02-15', 'abu elsayed', 100, 1);
-INSERT INTO productDB.product_details (id, product_id, name, expiration_date, manufacturer, price, available) VALUES (3, 3, 'cheese', '2024-06-11', 'dina farms', 50, 1);
-INSERT INTO productDB.product_details (id, product_id, name, expiration_date, manufacturer, price, available) VALUES (4, 4, 'chocolate ', '2024-02-29', 'cadbury', 60, 0);
 
+CREATE TABLE IF NOT EXISTS product_details (
+                                               id INT AUTO_INCREMENT PRIMARY KEY,
+                                               product_id INT NOT NULL,
+                                               expiration_date DATE NOT NULL,
+                                               manufacturer VARCHAR(255) NOT NULL,
+    price DOUBLE NOT NULL,
+    available TINYINT(1) NOT NULL DEFAULT 0,
+    UNIQUE (product_id),
+    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
+    );
+
+INSERT INTO product (name) VALUES ('Product 1'), ('Product 2'), ('Product 3');
+
+INSERT INTO product_details (product_id, expiration_date, manufacturer, price, available)
+VALUES
+    (1, '2023-12-31', 'Manufacturer A', 19.99, 1),
+    (2, '2024-06-30', 'Manufacturer B', 29.99, 0),
+    (3, '2023-11-15', 'Manufacturer C', 9.99, 1);

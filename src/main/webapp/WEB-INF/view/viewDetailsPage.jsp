@@ -6,8 +6,8 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style.css" />">
 </head>
 <body>
-<h1>Product Details</h1>
 <div class="container mt-5">
+    <h1 class="text-center">Product Details</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -18,7 +18,9 @@
                     <p class="card-text">Manufacturer: ${product.productDetails.manufacturer}</p>
                     <p class="card-text">Price: ${product.productDetails.price}</p>
                     <p class="card-text">Available: ${product.productDetails.available ? 'Yes' : 'No'}</p>
-                    <a href="<c:url value='/' />" class="btn btn-primary">Back to Products</a>
+                    <div class="text-center">
+                        <a href="<c:url value='/' />" class="btn btn-primary">Back to Products</a>
+                    </div>
                 </div>
             </div>
         </div>
